@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Theta blockchain-based hybrid CDN</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+  <script src="../../lib/theta.min.js"></script>
+  <script src="../../lib/theta-hls-plugin.min.js"></script>
+  <script src="./js/integration.js"></script>
+</head>
+
+<body>
+  <section id="header">
+    <div id="logo">
+      <a href="javascript;;"></a>
+    </div>
+    <h2 id="appTitle"></h2>
+    <div id="controls"></div>
+  </section>
+  <section id="content">
+    <div id="player_container" class="">
+      <video id="player" controls autoplay muted></video>
+    </div>
+    <div id="control-panel" style="display: flex; justify-content:space-between">
+      <div id="control-panel__left">
+        <div id="user">
+          <div class="sign_in_view hidden">
+            <a href="javascript:;" class="sign_in">Sign in</a>
+          </div>
+          <div class="select_account_view hidden">
+            <label for='address'>Select account:</label>
+            <select name="address" id="address">
+              <option value=''></option>
+            </select>
+          </div>
+          <table class="detail_view hidden">
+            <tr>
+              <td class="label">Name:</td>
+              <td class="name right"> </td>
+            </tr>
+            <tr>
+              <td class="label">Address:</td>
+              <td class="address right small"></td>
+            </tr>
+            <tr>
+              <td class="label">Balance:</td>
+              <td class="balance right small"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <!-- <a href="javascript:;" class="switch">Switch Account</a> -->
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="p2p-efficiency-container" style="align-self: flex-end">
+        <div id="p2p-control">
+          <!-- <input type="checkbox" checked id="use_cdn">Use CDN</input> -->
+          <!-- <button id="add_peer">Add peer</button> -->
+          <span>
+            <span id="num_peers">0</span>Peer(s)</span>
+        </div>
+        <div id="p2p-efficiency" style="display: flex">
+          <div id="p2p-efficiency__label">Inbound peer delivery efficiency&nbsp;&nbsp;&nbsp;:&nbsp;</div>
+          <div id="p2p-efficiency-in">0.00%</div>
+        </div>
+        <div id="p2p-efficiency" style="display: flex">
+          <div id="p2p-efficiency__label">Outbound peer delivery efficiency:&nbsp;</div>
+          <div id="p2p-efficiency-out">0.00%</div>
+        </div>
+      </div>
+    </div>
+    <div id="traffic-chart" class="">
+      <canvas id="canvas"></canvas>
+    </div>
+  </section>
+
+</body>
+
+</html>
