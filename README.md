@@ -6,7 +6,7 @@ This repository contains the packaged JavaScript client library along with a few
 
 ## Demo
 
-To see the mesh delivery protocol in action, please click [here for the Theta Test Channel](https://www.sliver.tv/win/usr880k7j7388ribhvy) on SLIVER.tv. You would need to register an account on SLIVER.tv to see the live demo, which should look similar to the screenshot below. 
+To see the mesh delivery protocol in action, please click [here for the Theta Test Channel](https://www.sliver.tv/win/usrz7gmpwjybrvzfj0i) on SLIVER.tv. You would need to register an account on SLIVER.tv to see the live demo, which should look similar to the screenshot below. 
 
 ![alt text](https://github.com/thetatoken/theta-protocol-delivery-lib/blob/master/examples/slivertv/slivertv_theta_integration_demo.png)
 
