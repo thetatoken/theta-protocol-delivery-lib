@@ -6,13 +6,12 @@
   <link rel="stylesheet" href="./css/main.css" />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
-  <script src="../../lib/theta.min.js"></script>
-  <script src="../../lib/theta-hls-plugin.min.js"></script>
-  <script src="./js/integration.js"></script>
+  <script src="../../lib/theta.min.js?v=10"></script>
+  <script src="../../lib/theta-hls-plugin.min.js?v=1"></script>
+  <script src="./js/integration.js?v=10"></script>
 </head>
 
-<body>
+<body onload="startApp()">
   <section id="header">
     <div id="logo">
       <a href="javascript;;"></a>
@@ -58,19 +57,17 @@
           </table>
         </div>
       </div>
-      <div id="p2p-efficiency-container" style="align-self: flex-end">
+      <div id="p2p-efficiency-container" style="align-self: flex-end; display: none;">
         <div id="p2p-control">
-          <!-- <input type="checkbox" checked id="use_cdn">Use CDN</input> -->
-          <!-- <button id="add_peer">Add peer</button> -->
           <span>
-            <span id="num_peers">0</span>Peer(s)</span>
+            <span id="num_peers">0</span> Peer(s)</span>
         </div>
-        <div id="p2p-efficiency" style="display: flex">
-          <div id="p2p-efficiency__label">Inbound peer delivery efficiency&nbsp;&nbsp;&nbsp;:&nbsp;</div>
+        <div style="display: flex">
+          <div>Inbound peer delivery efficiency&nbsp;&nbsp;&nbsp;:&nbsp;</div>
           <div id="p2p-efficiency-in">0.00%</div>
         </div>
-        <div id="p2p-efficiency" style="display: flex">
-          <div id="p2p-efficiency__label">Outbound peer delivery efficiency:&nbsp;</div>
+        <div style="display: flex">
+          <div>Outbound peer delivery efficiency:&nbsp;</div>
           <div id="p2p-efficiency-out">0.00%</div>
         </div>
       </div>
