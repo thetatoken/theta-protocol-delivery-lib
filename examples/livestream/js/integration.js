@@ -31,51 +31,42 @@ class PlatformThetaWalletService extends Theta.BaseWallet {
         }
     }
 
-    async
-
-    _makeRPC(name, args) {
+    async _makeRPC(name, args) {
         let data = {
             "jsonrpc": "2.0",
             "method": name,
             "params": [args],
             "id": "1"
         };
-        return new Promise((resolve, reject) = > {
+        return new Promise((resolve, reject) => {
             let auth = this.getAuth();
 
-        if (auth) {
-            // Configure the API call to your server adding headers, auth, etc.
-
-            $.ajax({
-                url: this.config.endpoint,
-                data: JSON.stringify(data),
-                type: 'POST',
-                headers: {
-                    'X-Auth-User': auth.userId,
-                    'X-Auth-Token': auth.authToken,
-                    'Content-Type': 'application/json'
-                }
-            }).done((resp) = > {
-                if(resp.error
-        )
-            {
-                reject(resp.error);
+            if(auth) {
+                // Configure the API call to your server adding headers, auth, etc.
+                $.ajax({
+                    url: this.config.endpoint,
+                    data: JSON.stringify(data),
+                    type: 'POST',
+                    headers: {
+                        'X-Auth-User': auth.userId,
+                        'X-Auth-Token': auth.authToken,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .done((resp) => {
+                    if(resp.error) {
+                        reject(resp.error);
+                    } else {
+                        resolve(resp.result);
+                    }
+                })
+                .fail((resp) => {
+                    reject(resp);
+                });
+            } else {
+                // No user us logged in.
             }
-        else
-            {
-                resolve(resp.result);
-            }
-        }).
-            fail((resp) = > {
-                reject(resp);
-        })
-            ;
-        }
-        else {
-            // No user us logged in.
-        }
-    })
-        ;
+        });
     }
 }
 
@@ -84,26 +75,12 @@ class PlatformThetaWalletService extends Theta.BaseWallet {
 
 function startVideo(theta) {
     class ClosuredThetaLoader extends Theta.HlsJsFragmentLoader {
-        load(
-
-    ...
-        args
-    ) {
-        // Inject context from closure.
-        this
-    .
-        thetaCtx = theta;
-        super
-    .
-
-        load(
-
-    ...
-        args
-    )
-        ;
+        load(...args) {
+            // Inject context from closure.
+            this.thetaCtx = theta;
+            super.load(...args);
+        }
     }
-}
 
     let hlsOpts = (theta ? {fLoader: ClosuredThetaLoader} : {});
     let videoURL = VIDEO_URL;
@@ -121,7 +98,6 @@ function startVideo(theta) {
     // the white-list is 'loadedmetadata'.
     if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
         // We are not using HLS.js, so Theta will not be able to use P2P!
-
         videoElement.src = videoURL;
         videoElement.addEventListener('loadedmetadata', function () {
             videoElement.play();
