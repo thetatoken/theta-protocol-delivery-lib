@@ -4,7 +4,7 @@ The Theta Mesh Delivery Protocol handles bandwidth sharing. Currently it is impl
 
 ## Integration Examples
 
-This repository contains the packaged JavaScript client library along with a few integration examples. Please [click here for more details](examples/livestream)
+This repository contains the packaged JavaScript client library and a few examples which demostrate how to integrate the Theta Mesh Delivery Javascript library into streaming websites. Please [click here for more details](examples/livestream).
 
 ## Demo on SLIVER.tv
 
