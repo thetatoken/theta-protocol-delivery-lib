@@ -9,64 +9,87 @@ const PLATFORM_THETA_WALLET_SERVICE_URL = "https://api-wallet-service.thetatoken
 
 // TODO Fill these in with your data
 const VIDEO_ID = 'vid123';
-const LOGGED_IN_USER_ID = 'usr123';
-const LOGGED_IN_USER_AUTH_TOKEN = 'tok123';
 const VIDEO_URL = "https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8";
+
+
+// --------- Guest User Helpers ------------
+
+function generateGuestUserIdIfNeeded() {
+    let guestUserId = localStorage.getItem("THETA_EXAMPLE_GUEST_USER_ID");
+    if (guestUserId === null) {
+        var guestID = "" + (new Date().getTime());
+        localStorage.setItem("THETA_EXAMPLE_GUEST_USER_ID", guestID);
+    }
+}
+
+function getGuestUserId() {
+    return localStorage.getItem("THETA_EXAMPLE_GUEST_USER_ID")
+}
 
 // --------- Platform Theta Wallet ------------
 
 class PlatformThetaWalletService extends Theta.BaseWallet {
-    getAuth() {
-        let userId = LOGGED_IN_USER_ID;
-        let authToken = LOGGED_IN_USER_AUTH_TOKEN;
+    async getWalletAccessToken() {
+        let headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-Guest-User': getGuestUserId()
+        };
 
-        if (userId && authToken) {
-            return {
-                userId: userId,
-                authToken: authToken
-            }
-        }
-        else {
-            // No user is logged in, don't call the server.
-            return null;
-        }
+        const settings = {
+            method: 'POST',
+            headers: headers
+        };
+
+        //TODO This is a sample endpoint to auth your user; however, you will implement your own endpoint to generate a signed JWT
+        // in order to authenticate your own users' transaction (please contact us to get a testnet API Key / Secret Key & Docs)
+        let url = "https://api.sliver.tv/v1/theta/vault/token";
+        let response = await fetch(url, settings);
+        let responseData = await response.json();
+        let body = responseData["body"];
+        let accessToken = body["access_token"];
+
+        return accessToken;
     }
 
     async _makeRPC(name, args) {
+        let self = this;
+
         let data = {
             "jsonrpc": "2.0",
             "method": name,
             "params": [args],
             "id": "1"
         };
-        return new Promise((resolve, reject) => {
-            let auth = this.getAuth();
 
-            if(auth) {
-                // Configure the API call to your server adding headers, auth, etc.
-                $.ajax({
-                    url: this.config.endpoint,
-                    data: JSON.stringify(data),
-                    type: 'POST',
-                    headers: {
-                        'X-Auth-User': auth.userId,
-                        'X-Auth-Token': auth.authToken,
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .done((resp) => {
-                    if(resp.error) {
-                        reject(resp.error);
-                    } else {
-                        resolve(resp.result);
-                    }
-                })
-                .fail((resp) => {
-                    reject(resp);
-                });
-            } else {
-                // No user us logged in.
-            }
+        let accessToken = await this.getWalletAccessToken();
+        if (accessToken === null) {
+            //Try again...
+            setTimeout(function () {
+                console.log("trying again...");
+                self._makeRPC(name, args);
+            }, 1000);
+            return;
+        }
+
+        return new Promise((resolve, reject) => {
+            let headers = {'Content-Type': 'application/json'};
+            headers["x-access-token"] = accessToken;
+
+            $.ajax({
+                url: "https://api-wallet-service.thetatoken.org/theta",
+                data: JSON.stringify(data),
+                type: 'POST',
+                headers: headers
+            }).done((resp) => {
+                if (resp.error) {
+                    reject(resp.error);
+                } else {
+                    resolve(resp.result);
+                }
+            }).fail((resp) => {
+                reject(resp);
+            });
         });
     }
 }
@@ -125,7 +148,7 @@ function startVideo(theta) {
 }
 
 function startPlayer() {
-    let userId = LOGGED_IN_USER_ID;
+    let userId = getGuestUserId();
 
     let wallet = new PlatformThetaWalletService({
         endpoint: PLATFORM_THETA_WALLET_SERVICE_URL
@@ -133,6 +156,7 @@ function startPlayer() {
     wallet.start();
 
     let theta = new Theta({
+        //TODO adjust params as needed depending on your HLS settings
         fragmentSize: 5000,
         failoverFactor: 0.7,
         fragmentTimeout: 3000,
@@ -198,5 +222,6 @@ function startPlayer() {
 }
 
 function startApp() {
+    generateGuestUserIdIfNeeded();
     startPlayer();
 }
