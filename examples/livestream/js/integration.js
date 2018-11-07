@@ -189,6 +189,9 @@ function startPlayer() {
     });
     theta.start();
 
+    //If you are using the Theta widget, connect the widget so it can listen to events
+    theta.connectWidget();
+
     startVideo(theta);
 }
 
