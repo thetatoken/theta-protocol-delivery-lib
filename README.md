@@ -2,11 +2,13 @@
 
 The Theta Mesh Delivery Protocol handles bandwidth sharing. Currently it is implemented as a lightweight JavaScript library built on top of WebRTC. It can be integrated into web pages with minimal effort, and enables instant browser-to-browser stream data sharing among viewers. Advanced geolocation and connectivity history based peer grouping algorithms have been designed to maximize peer offload with guaranteed delivery QoS. A high level description of the mesh delivery technology is detailed in our blog post ["Building the Theta Protocol: Part II - Overview of the Hybrid Mesh Streaming Technology"](https://medium.com/theta-network/building-the-theta-protocol-part-ii-ea9d12e221bb).
 
-This repository contains the packaged JavaScript client library along with a few integration examples.
+## Integration Examples
 
-## Demo
+This repository contains the packaged JavaScript client library along with a few integration examples. Please [click here for more details](examples/livestream)
 
-To see the mesh delivery protocol in action, please click [here for the Theta Test Channel](https://www.sliver.tv/win/usrz7gmpwjybrvzfj0i) on SLIVER.tv. You would need to register an account on SLIVER.tv to see the live demo, which should look similar to the screenshot below. 
+## Demo on SLIVER.tv
+
+To see the mesh delivery protocol in action, please [click here for the Theta Test Channel](https://www.sliver.tv/win/theta) on SLIVER.tv. You would need to register an account on SLIVER.tv to see the live demo, which should look similar to the screenshot below. 
 
 ![alt text](https://github.com/thetatoken/theta-protocol-delivery-lib/blob/master/examples/slivertv/slivertv_theta_integration_demo.png)
 
