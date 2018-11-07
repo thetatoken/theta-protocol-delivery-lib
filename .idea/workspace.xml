@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="23fdefc2-c8a1-428c-9b21-c99ec07b1b39" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/livestream/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/examples/livestream/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/livestream/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/livestream/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/livestream/js/integration.js" beforeDir="false" afterPath="$PROJECT_DIR$/examples/livestream/js/integration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theta-hls-plugin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theta-hls-plugin.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theta.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theta.min.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,10 +17,11 @@
     <session id="-1238473113">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -35,12 +36,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="712" />
+          <entry key="css" value="1" />
+          <entry key="html" value="114" />
+          <entry key="js" value="770" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="712" />
+          <entry key="CSS" value="1" />
+          <entry key="HTML" value="114" />
+          <entry key="JavaScript" value="770" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -49,11 +54,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/livestream/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+            <state relative-caret-position="300">
+              <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -63,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/livestream/js/integration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="776">
-              <caret line="86" column="24" lean-forward="true" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
+            <state relative-caret-position="795">
+              <caret line="231" column="54" selection-start-line="231" selection-start-column="54" selection-end-line="231" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -92,7 +97,11 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/livestream/css/main.css">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-672">
+              <caret line="123" column="1" lean-forward="true" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -108,6 +117,8 @@
       <find>usr</find>
       <find>generateGuestUserIdIfNeeded</find>
       <find>LOGGED_IN_USER_ID</find>
+      <find>css</find>
+      <find>#content</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -119,8 +130,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/examples/livestream/index.html" />
         <option value="$PROJECT_DIR$/examples/livestream/js/integration.js" />
+        <option value="$PROJECT_DIR$/examples/livestream/css/main.css" />
+        <option value="$PROJECT_DIR$/examples/livestream/index.html" />
       </list>
     </option>
   </component>
@@ -146,7 +158,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -189,6 +200,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -257,18 +269,19 @@
       <updated>1538693540923</updated>
       <workItem from="1538693542936" duration="3866000" />
       <workItem from="1541561337834" duration="154000" />
-      <workItem from="1541570810543" duration="1868000" />
+      <workItem from="1541570810543" duration="2128000" />
+      <workItem from="1541622426432" duration="752000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5888000" />
+    <option name="totallyTimeSpent" value="6900000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25885227" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -316,24 +329,28 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/livestream/css/main.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/livestream/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="-672">
+          <caret line="123" column="1" lean-forward="true" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/livestream/js/integration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
-          <caret line="86" column="24" lean-forward="true" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
+        <state relative-caret-position="795">
+          <caret line="231" column="54" selection-start-line="231" selection-start-column="54" selection-end-line="231" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/livestream/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

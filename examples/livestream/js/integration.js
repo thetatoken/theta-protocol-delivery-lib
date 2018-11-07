@@ -224,4 +224,10 @@ function startPlayer() {
 function startApp() {
     generateGuestUserIdIfNeeded();
     startPlayer();
+
+    //Optional - Setup Theta Web Widgets
+    var widget = new ThetaWebWidgets.OverviewWithTrafficChartWidget();
+    widget.setTheme(ThetaWebWidgets.Themes.Light);
+    widget.setMainMessage("Welcome to the Sample Integration (Testnet). Help us test blockchain video sharing and earn Gamma tokens.");
+    widget.render("SAMPLE_THETA_WEB_WIDGET_PLACEHOLDER");
 }
