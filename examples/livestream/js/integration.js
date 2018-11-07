@@ -5,8 +5,9 @@ const PEER_SERVER_PORT = 8700;
 const TRACKER_SERVER_HOST = "prod-testnet-grouping.thetatoken.org";
 const TRACKER_SERVER_PORT = 8700;
 
+const PLATFORM_THETA_WALLET_SERVICE_URL = "https://api-wallet-service.thetatoken.org/theta";
+
 // TODO Fill these in with your data
-const PLATFORM_THETA_WALLET_SERVICE_URL = "https://wallet.myplatform.com/v1/theta/";
 const VIDEO_ID = 'vid123';
 const LOGGED_IN_USER_ID = 'usr123';
 const LOGGED_IN_USER_AUTH_TOKEN = 'tok123';
@@ -86,24 +87,7 @@ function startVideo(theta) {
     let videoURL = VIDEO_URL;
     let videoElement = document.getElementById('player');
 
-    // hls.js is not supported on platforms that do not have Media Source 
-    // Extensions (MSE) enabled. When the browser has built-in HLS support 
-    // (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) 
-    // directly to the video element throught the `src` property. This is using the 
-    // built-in support of the plain video element, without using hls.js.
-    // Note: it would be more normal to wait on the 'canplay' event below however on 
-    // Safari (where you are most likely to find built-in HLS support) the video.src 
-    // URL must be on the user-driven. White-list before a 'canplay' event will be emitted; 
-    // the last video event that can be reliably listened-for when the URL is not on 
-    // the white-list is 'loadedmetadata'.
-    if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-        // We are not using HLS.js, so Theta will not be able to use P2P!
-        videoElement.src = videoURL;
-        videoElement.addEventListener('loadedmetadata', function () {
-            videoElement.play();
-        });
-    }
-    else if (Hls.isSupported()) {
+    if (Hls.isSupported()) {
         let hls = new Hls(hlsOpts);
         hls.attachMedia(videoElement);
 
@@ -114,6 +98,24 @@ function startVideo(theta) {
 
         hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
             // Start playback
+            videoElement.play();
+        });
+    }
+    else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+        // hls.js is not supported on platforms that do not have Media Source
+        // Extensions (MSE) enabled. When the browser has built-in HLS support
+        // (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL)
+        // directly to the video element throught the `src` property. This is using the
+        // built-in support of the plain video element, without using hls.js.
+        // Note: it would be more normal to wait on the 'canplay' event below however on
+        // Safari (where you are most likely to find built-in HLS support) the video.src
+        // URL must be on the user-driven. White-list before a 'canplay' event will be emitted;
+        // the last video event that can be reliably listened-for when the URL is not on
+        // the white-list is 'loadedmetadata'.
+
+        // We are not using HLS.js, so Theta will not be able to use P2P!
+        videoElement.src = videoURL;
+        videoElement.addEventListener('loadedmetadata', function () {
             videoElement.play();
         });
     }
