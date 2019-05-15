@@ -121,6 +121,7 @@ function startPlayer() {
     let wallet = new Theta.Wallet({
         provider: walletProvider
     });
+    wallet.start();
 
     let theta = new Theta({
         //TODO adjust params as needed depending on your HLS settings
