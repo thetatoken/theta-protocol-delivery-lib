@@ -5,7 +5,7 @@ const PEER_SERVER_PORT = 8700;
 const TRACKER_SERVER_HOST = "prod-testnet-grouping.thetatoken.org";
 const TRACKER_SERVER_PORT = 8700;
 
-const PLATFORM_THETA_WALLET_SERVICE_URL = "https://api-wallet-service.thetatoken.org/theta";
+const PLATFORM_THETA_WALLET_SERVICE_URL = "wss://api-wallet-service.thetatoken.org/theta/ws";
 
 // TODO Fill these in with your data
 const VIDEO_ID = 'vid123';
@@ -29,9 +29,21 @@ function getGuestUserId() {
 async function fetchVaultAuthToken(){
     //TODO This is a sample endpoint to auth your user; however, you will implement your own endpoint to generate a signed JWT
     // in order to authenticate your own users' transaction (please contact us to get a testnet API Key / Secret Key & Docs)
+    let headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        //FIXME: these are just for this example, you should add your own auth headers here when you integrate your own token endpoint :)
+        'X-Auth-User': "usr5gv7cfqi4ezyf4m8",
+        'X-Auth-Token': "wrezhw0itv6j296mnybyb3nwnebwg4ws"
+    };
+
+    const options = {
+        method: 'POST',
+        headers: headers
+    };
 
     let url = "https://api.sliver.tv/v1/theta/vault/token";
-    let response = await fetch(url);
+    let response = await fetch(url, options);
     let responseData = await response.json();
     let body = responseData["body"];
     let accessToken = body["access_token"];
@@ -44,7 +56,7 @@ async function fetchVaultAuthToken(){
 class PlatformThetaWalletWebSocketProvider extends Theta.WalletWebSocketProvider {
     //Override getAuth to fetch our own short TTL access token first
     async getAuth() {
-        let result = await this.fetchVaultAuthToken();
+        let result = await fetchVaultAuthToken();
         let accessToken = result;
 
         if(accessToken === null){
