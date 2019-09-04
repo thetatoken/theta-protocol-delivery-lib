@@ -9,8 +9,8 @@ const PLATFORM_THETA_WALLET_SERVICE_URL = "wss://api-wallet-service.thetatoken.o
 
 // TODO Fill these in with your data
 const VIDEO_ID = 'vid123';
-const VIDEO_URL = "https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8";
-
+//const VIDEO_URL = "https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8";
+const VIDEO_URL = "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
 
 // --------- Guest User Helpers ------------
 
