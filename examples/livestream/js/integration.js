@@ -13,6 +13,20 @@ const VIDEO_ID = 'vid123';
 const VIDEO_URL = "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
 
 // --------- Guest User Helpers ------------
+let useCDN = false;
+
+function toggleUseCDN(){
+    let d = document.getElementById("switch-text");
+    useCDN = !useCDN;
+    Theta.toggleUseCDN();
+    if(useCDN){
+        d.style.color = '#eb475b';
+        d.innerText = "CDN TRAFFIC ONLY";
+        return
+    }
+    d.style.color = '#25C4E4';
+    d.innerText = "CDN + P2P TRAFFIC";
+}
 
 function generateGuestUserIdIfNeeded() {
     let guestUserId = localStorage.getItem("THETA_EXAMPLE_GUEST_USER_ID");

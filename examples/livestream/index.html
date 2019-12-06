@@ -4,7 +4,8 @@
 <head>
   <title>Theta blockchain-based hybrid CDN</title>
   <link rel="stylesheet" href="./css/main.css" />
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="../../lib/theta.min.js?v=10"></script>
   <script src="../../lib/theta-hls-plugin.min.js?v=1"></script>
@@ -79,9 +80,16 @@
         </div>
       </div>
     </div>
-
+    <div class="display-overlay" id="display-overlay">
+      <div class="btn tx" id="switch-text">CDN + P2P Traffic</div>
+      <label class="p2pswitch">
+        <input type="checkbox" checked></input>
+        <span class="slider" onclick="toggleUseCDN()"></span>
+      </label>
+    </div>
     <!-- Optional - For Theta Web Widget -->
     <div id="SAMPLE_THETA_WEB_WIDGET_PLACEHOLDER"></div>
   </section>
 </body>
+
 </html>
