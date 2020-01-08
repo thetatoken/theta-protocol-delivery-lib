@@ -13,13 +13,11 @@ const VIDEO_ID = 'vid123';
 const VIDEO_URL = "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
 
 // --------- Guest User Helpers ------------
-let useCDN = false;
 
-function toggleUseCDN(){
+function toggleUseCDN() {
     let d = document.getElementById("switch-text");
-    useCDN = !useCDN;
-    Theta.toggleUseCDN();
-    if(useCDN){
+    Theta.isPeeringEnabled = !Theta.isPeeringEnabled;
+    if (!Theta.isPeeringEnabled) {
         d.style.color = '#eb475b';
         d.innerText = "CDN TRAFFIC ONLY";
         return
@@ -40,7 +38,7 @@ function getGuestUserId() {
     return localStorage.getItem("THETA_EXAMPLE_GUEST_USER_ID")
 }
 
-async function fetchVaultAuthToken(){
+async function fetchVaultAuthToken() {
     //TODO This is a sample endpoint to auth your user; however, you will implement your own endpoint to generate a signed JWT
     // in order to authenticate your own users' transaction (please contact us to get a testnet API Key / Secret Key & Docs)
     let headers = {
@@ -73,7 +71,7 @@ class PlatformThetaWalletWebSocketProvider extends Theta.WalletWebSocketProvider
         let result = await fetchVaultAuthToken();
         let accessToken = result;
 
-        if(accessToken === null){
+        if (accessToken === null) {
             //No access token, try a non-authed call
             return {};
         }
@@ -98,7 +96,7 @@ function startVideo(theta) {
         }
     }
 
-    let hlsOpts = (theta ? {fLoader: ClosuredThetaLoader} : {});
+    let hlsOpts = (theta ? { fLoader: ClosuredThetaLoader } : {});
     let videoURL = VIDEO_URL;
     let videoElement = document.getElementById('player');
 
